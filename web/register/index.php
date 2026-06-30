@@ -21,7 +21,6 @@ if (isset($_POST['submit'])) {
             $_SESSION['pass'] = $pass;
             $_SESSION['id'] = $getUser->fetch()['id'];
         }
-        echo $_SESSION['id'];
     } else {
         echo 'Veuillez remplir tous les champs!';
     }
