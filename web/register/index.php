@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$message = "";
 $config = require __DIR__ . '/../host.php';
 
 $db = new PDO(
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
         if ($check->rowCount() > 0) {
 
-            echo "Ce nom d'utilisateur existe déjà.";
+            $message = "Ce nom d'utilisateur existe déjà.";
 
         } else {
 
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 
     } else {
 
-        echo "Veuillez remplir tous les champs !";
+        $message = "Veuillez remplir tous les champs !";
     }
 }
 ?>
@@ -49,9 +49,15 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syncarox: Register</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <form action="" method="post">
+        <h1>Syncarox</h1>
+        <p class="subtitle">Creer un Compte</p>
+        <?php if (!empty($message)) : ?>
+        <div class="error"><?= htmlspecialchars($message) ?></div>
+        <?php endif; ?>
         <p>Nom d'Utilisateur</p>
         <input name="username" id="name" autocomplete="off">
         <br>
