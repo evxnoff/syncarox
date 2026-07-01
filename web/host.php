@@ -5,3 +5,4 @@ return [
     'user' => 'root',
     'password' => ''
 ];
+header("Location: index.php");
